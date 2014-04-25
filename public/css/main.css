@@ -73,7 +73,7 @@ a:hover   { color: #cb4b16; }
 
 .site {
 	text-align: justify;
-	line-height: 1.25em;
+	line-height: 1.5;
 }
 
 div.left {
@@ -84,7 +84,10 @@ div.left {
 	text-align: center;
 }
 
-.header { margin: 30px 0; }
+.header {
+	margin: 30px 0;
+	line-height: 0;
+}
 
 .header a { text-decoration: none; }
 
@@ -120,7 +123,7 @@ div.left {
 .nav ul li a:link, .nav ul li a:visited {
 	display: block;
 	color: #268bd2;
-	padding: .5em 0;
+	padding: .1em 0;
 	font-size: 150%;
 	font-weight: bold;
 	text-align: center;
