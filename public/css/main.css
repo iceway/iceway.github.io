@@ -96,12 +96,10 @@ div.left {
 .nav ul {
 	list-style-type: none;
 	overflow: hidden;
-	border-top: 1px solid #93a1a1;
 }
 
-.nav ul li {
-	border-bottom: 1px solid #93a1a1;
-}
+.nav ul li { border-bottom: 1px solid #93a1a1; }
+.nav ul:first-child { border-top: 1px solid #93a1a1; }
 
 .nav ul li a:link, .nav ul li a:visited {
 	display: block;
