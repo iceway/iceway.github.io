@@ -79,7 +79,7 @@ div.left {
 	position: fixed;
 	width: 	260px;
 	height: 100%;
-	border-right: 3px double #268bd2;
+	border-right: 1px solid #93a1a1;
 	text-align: center;
 }
 
@@ -112,11 +112,11 @@ div.left {
 .nav ul {
 	list-style-type: none;
 	overflow: hidden;
-	border-top: 1px dashed #268bd2;
+	border-top: 1px solid #93a1a1;
 }
 
 .nav ul li {
-	border-bottom: 1px dashed #268bd2;
+	border-bottom: 1px solid #93a1a1;
 }
 
 .nav ul li a:link, .nav ul li a:visited {
@@ -142,7 +142,7 @@ div.left {
 	margin: 2% 5%;
 	height: 3em;
 	color: #586e75;
-	border-top: 1px dashed #b58900;
+	border-top: 1px solid #93a1a1;
 	overflow: hidden;
 }
 
