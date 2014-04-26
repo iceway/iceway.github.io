@@ -88,24 +88,8 @@ div.left {
 	line-height: 0;
 }
 
-.header a { text-decoration: none; }
-
 .header img { opacity: 0.5; }
 .header img:hover { opacity: 1.0; }
-
-.header span {
-	font-size: 60px;
-	font-family: Serif;
-	font-style: italic;
-	text-align: justify;
-	margin: 0;
-}
-.header span.L { color: #d33682; }
-.header span.Z { color: #268bd2; }
-.header span.and {
-	color: #859900;
-	font-size: 45px;
-}
 
 .nav { margin: 15px 0; }
 
