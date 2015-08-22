@@ -1,8 +1,8 @@
 markdown: redcarpet
 permalink: /:title
 
-url: http://aigarsdz.github.io
-baseurl: /brume
+url: http://iceway.github.io
+baseurl:
 
 redcarpet:
   extensions: [strikethrough, tables]
