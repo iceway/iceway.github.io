@@ -1,4 +1,8 @@
-name: Iceway
-premalink: date
 markdown: redcarpet
-pygments: true
+permalink: /:title
+
+url: http://aigarsdz.github.io
+baseurl: /brume
+
+redcarpet:
+  extensions: [strikethrough, tables]
