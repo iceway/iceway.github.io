@@ -1,8 +1,11 @@
 markdown: redcarpet
-permalink: /:title
-
-url: http://iceway.github.io
-baseurl:
-
-redcarpet:
-  extensions: [strikethrough, tables]
+permalink: /:title/
+url: http://iceway.github.io/
+highlighter: pygments
+name: L&Z
+description: Iceway [ Bit by bit, step by step. ]
+author: iceway
+email: iceway.zhang@gmail.com
+safe: true
+paginate: 100
+about: "coder"

@@ -1,6 +1,7 @@
 ---
+title: 关于
 layout: page
-title: About
+comments: no
 ---
 
-Nothing yet :(
+On the way!
