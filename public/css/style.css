@@ -66,6 +66,7 @@ h4{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-siz
 pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:13px;}
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
+#logo{width:6em;height:6em;}
 
 footer{
 text-align:center;
