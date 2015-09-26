@@ -30,20 +30,24 @@ tags: redmine openSUSE
 
 1.  参考[官方安装文档][install]，创建数据库以及用户并设置用户对数据库的权限。下面的命令是针对mysql的操作，注意将数据库名，用户名以及密码替换成你自己的。
 
-        CREATE DATABASE redmine CHARACTER SET utf8;
-        CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'my_password';
-        GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+```sql
+CREATE DATABASE redmine CHARACTER SET utf8;
+CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'my_password';
+GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+```
 
 2.  解压从官网下载的redmine（一般解压到/srv/www目录下，这个可以随自己的需求解压到哪里都可以）。
 
     根据上一步创建的数据库配置redmine，进入redmine根目录，复制*config/database.yml.example*为*config/database.yml*，并修改该配置文件如下。
 
-    > production:  
-    >   adapter: mysql  
-    >   database: redmine  
-    >   host: localhost  
-    >   username: redmine  
-    >   password: my_password
+```yaml
+production:  
+  adapter: mysql  
+  database: redmine  
+  host: localhost  
+  username: redmine  
+  password: my_password
+```
 
 3.  安装依赖，redmine通过Bundler管理gem依赖，所以要先安装bundler。
 
