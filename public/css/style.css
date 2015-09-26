@@ -46,6 +46,7 @@ td, th { padding:5px 10px; border:1px solid #886; background:#efefef; }
 
 }
 .highlight{padding:.5em 1em;background-color:#eeeeee;border-radius:6px;line-height:1;}
+p code{padding:.2em;border-radius:5px;background-color:#eeeeee;color:#272822;}
 
 .listing-item time{color:#999999;}
 .listing-seperator{font-weight:bold;}
