@@ -71,5 +71,5 @@
 .post>.highlight pre code.console .gp { color: #999; }
 pre {padding:.5em 1em;background-color:#F4F4F4;border:1px solid #ccc;border-radius:5px;}
 
-code { color: #333; background-color: #F4F4F4 }
+code { color: #333; background-color: #F4F4F4; border-radius:5px; padding: .2em;}
 h1 code, h2 code, h3 code, h4 code { color: #c7254e }

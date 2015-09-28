@@ -28,7 +28,7 @@ ul{list-style-position:inside;padding: .3em 0;}
 li ol{border-style:none;}
 li ul{border-style:none;}
 ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
-pre code{margin:1em 0;font-size:13px;line-height:1.6;display:block;overflow:auto;}
+pre code{margin:1em 0;font-size:13px;line-height:1.6;display:block;overflow:auto;padding:0;border:none;}
 blockquote{display:block;text-align:justify;border-left:2px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
@@ -45,7 +45,6 @@ td, th { padding:5px 10px; border:1px solid #886; background:#efefef; }
         padding:.2em 1em;
 
 }
-p code{padding:.2em;border-radius:5px;background-color:#eeeeee;color:#272822;}
 
 .listing-item time{color:#999999;}
 .listing-seperator{font-weight:bold;}
