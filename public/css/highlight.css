@@ -69,6 +69,7 @@
 .post>.highlight pre code.console { color:#666; background-color: black; padding: inherit;}
 .post>.highlight pre code.console .go { color: #bbb; }
 .post>.highlight pre code.console .gp { color: #999; }
+pre {padding:.5em 1em;background-color:#F4F4F4;border:1px solid #ccc;border-radius:5px;}
 
 code { color: #333; background-color: #F4F4F4 }
 h1 code, h2 code, h3 code, h4 code { color: #c7254e }
