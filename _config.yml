@@ -1,19 +1,33 @@
+permalink: /:year/:month/:day/:title.html
+paginate: 30
 markdown: redcarpet
 highlighter: pygments
-permalink: /:title/
-url: http://iceway.github.io/
-name: L&Z
-description: Iceway [ Bit by bit, step by step. ]
-author: iceway
-email: iceway.zhang@gmail.com
-safe: true
-paginate: 100
-about: "coder"
 
 redcarpet:
-        extensions:
-                - fenced_code_blocks
-                - no_intra_emphasis
-                - strikethrough
-                - autolink
-                - tables
+  extensions:
+    - fenced_code_blocks
+    - no_intra_emphasis
+    - strikethrough
+    - autolink
+    - tables
+
+# 作者
+author:
+  name: Iceway Zhang
+  email: iceway.zhang@gmail.com
+  github: http://github.com/iceway
+
+# 站点
+site:
+  title: L&Z
+  description: Iceway's Sharing and Recording.
+  url: http://iceway.github.io/
+  favicon: /public/images/favicon.ico
+  logo: /public/images/logo.png
+
+# 本地化
+locals:
+  home: 首页
+  tags: 标签
+  category: 分类
+  about: 关于
