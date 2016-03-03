@@ -28,6 +28,6 @@ site:
 # 本地化
 locals:
   home: 首页
-  tags: 标签
+  tag: 标签
   category: 分类
   about: 关于
