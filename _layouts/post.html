@@ -13,7 +13,7 @@ layout: base
 		</span>
 		{% if page.categories.size != 0 %}
 		|
-		<span class="categories">分类
+		<span class="categories"> {{ site.locals.category }}
   		{% for cate in page.categories %}
   			<a href="/categories/#{{ cate }}" title="{{ cate }}">{{ cate }}</a>
   		{% endfor %}
@@ -21,7 +21,7 @@ layout: base
 		{% endif %}
 		{% if page.tags.size != 0 %}
  		|
-		<span class="tags">标签
+		<span class="tags"> {{ site.locals.tag }}
   		{% for tag in page.tags %}
   			<a href="/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
   		{% endfor %}
