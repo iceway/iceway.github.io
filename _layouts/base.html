@@ -1,21 +1,15 @@
 <!doctype html>
 <html>
 <head>
-	{% include header.html %}
+{% include header.html %}
 </head>
 <body>
-	<div id="container">
-		<div id="nav">
-				{% include nav.html %}
-		</div>
+{% include nav.html %}
 
-		<div id="main">
-			{{ content }}
-		</div>
+<div id="container">
+{{ content }}
 
-		<div id="footer">
-				{% include footer.html %}
-		</div>
-	</div>
+{% include footer.html %}
+</div>
 </body>
 </html>
