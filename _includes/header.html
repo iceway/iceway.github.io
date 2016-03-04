@@ -1,13 +1,13 @@
 <meta charset="utf-8">
-<title>{{ page.title }}|{{ site.site.title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="{{ site.author.name }}">
-{% if page.keywords %}
-	<meta name="keywords" content="{{ page.keywords }}">
+{% if site.site.keywords %}
+<meta name="keywords" content="{{ site.site.keywords }}">
 {% endif %}
-{% if page.description %}
-	<meta name="description" content="{{ page.description }}">
+{% if site.site.description %}
+<meta name="description" content="{{ site.site.description }}">
 {% endif %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="{{ site.site.favicon }}" />
 <link rel="stylesheet" href="/public/css/bootsrap.min.css">
 <link rel="stylesheet" href="/public/css/highlight.css">
+<title>{{ site.site.title }}|{{ site.site.description }}</title>
