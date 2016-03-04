@@ -1,16 +1,28 @@
-<nav>
-	<!-- 导航最上方按钮：点击可以显示/隐藏导航菜单 -->
-	<div style="position:fixed;right:15px;top:62px;">
-		<button id="nav_btn" class="btn btn-primary">
-			<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-		</button>
-	</div>
+<!-- 导航最上方按钮：点击可以显示/隐藏导航菜单 -->
+<!--
+<div style="position:fixed;right:15px;top:62px;">
+	<button id="nav_btn" class="btn btn-primary">
+		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+	</button>
+</div>
+-->
 
-	<!-- 导航菜单最上面显示logo -->
-	<span><img src="{{ site.site.logo }}" id="logo"></img></span>
-	<!-- 导航菜单: 首页、分类、标签、关于 -->
-	<span><a title="{{ site.locals.home }}" href="/">{{ site.locals.home }}</a></span>
-	<span><a title="{{ site.locals.category }}" href="/pages/category.html">{{ site.locals.category }}</a></span>
-	<span><a title="{{ site.locals.tag }}" href="/pages/tag.html">{{ site.locals.tag }}</a></span>
-	<span><a title="{{ site.locals.about }}" href="/pages/about.html">{{ site.locals.about }}</a></span>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+			<!-- 导航菜单最上面显示logo -->
+			<!--
+		<div class="navbar-header">
+			<span><img class="img-rounded" src="{{ site.site.logo }}" id="logo"></img></span>
+		</div>
+			-->
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<!-- 导航菜单: 首页、分类、标签、关于 -->
+				<li role="presentation" class="active"><a href="/">{{ site.locals.home }}</a></li>
+				<li role="presentation"><a href="/pages/category.html">{{ site.locals.category }}</a></li>
+				<li role="presentation"><a href="/pages/tag.html">{{ site.locals.tag }}</a></li>
+				<li role="presentation"><a href="/pages/about.html">{{ site.locals.about }}</a></li>
+			</ul>
+		</div>
+	</div>
 </nav>
