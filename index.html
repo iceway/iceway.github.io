@@ -4,25 +4,23 @@ layout: page
 ---
 
 <div class="container-fluid">
-<table class="table table-hover">
-	<tbody>
-{% for post in paginator.posts %}
-  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
-  {% if year != y %}
-    {% assign year = y %}
-    <tr class="active"><td><h2>{{ y }}</h2></td><td></td></tr>
-  {% endif %}
-  <tr>
-		<td><time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time></td>
-    <td><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></td>
-    {% if site.truncate %}
-		<!-- 如果_config.yml中设置了truncate，显示该值指定长度的字符作为内容预览 -->
-    <p>{{ post.content | strip_html | truncate: site.truncate }}</p>
-    {% endif%}
-  </tr>
-{% endfor %}
-</tbody>
-</table>
+<ul class="list-unstyled">
+	{% for post in paginator.posts %}
+	  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
+	  {% if year != y %}
+	    {% assign year = y %}
+	    <li><h2>{{ y }}</h2></li>
+	  {% endif %}
+		  <li>
+				<time class="disabled" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+		    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+		    {% if site.truncate %}
+				<!-- 如果_config.yml中设置了truncate，显示该值指定长度的字符作为内容预览 -->
+		    <p>{{ post.content | strip_html | truncate: site.truncate }}</p>
+		    {% endif%}
+		  </li>
+	{% endfor %}
+</ul>
 </div>
 
 <nav>
