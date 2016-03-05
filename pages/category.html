@@ -13,14 +13,16 @@ layout: page
 </ul>
 </div>
 
-<ul class="listing2">
+<div class="container-fluid">
+<ul class="list-unstyled">
 {% for cat in site.categories %}
-  <li class="listing-seperator" id="{{ cat[0] }}">{{ cat[0] }}</li>
+  <li><h2 id="{{ cat[0] }}">{{ cat[0] }}</h2></li>
 {% for post in cat[1] %}
-  <li class="listing-item">
+  <li>
   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
   </li>
 {% endfor %}
 {% endfor %}
 </ul>
+</div>
