@@ -14,10 +14,6 @@ layout: page
 		  <li>
 				<time class="disabled" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
 		    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-		    {% if site.truncate %}
-				<!-- 如果_config.yml中设置了truncate，显示该值指定长度的字符作为内容预览 -->
-		    <p>{{ post.content | strip_html | truncate: site.truncate }}</p>
-		    {% endif%}
 		  </li>
 	{% endfor %}
 </ul>
