@@ -4,7 +4,7 @@ layout: page
 ---
 
 <div class="container-fluid">
-<ul class="list-unstyled">
+<ul class="list-unstyled list-posts">
 	{% for post in paginator.posts %}
 	  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
 	  {% if year != y %}
@@ -12,7 +12,7 @@ layout: page
 	    <li><h2>{{ y }}</h2></li>
 	  {% endif %}
 		  <li>
-				<time class="disabled" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+				<time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
 		    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 		  </li>
 	{% endfor %}

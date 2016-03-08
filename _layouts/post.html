@@ -6,21 +6,21 @@ layout: base
 </header>
 
 <!-- 文章属性：创建日期、所属分类、所属标签 -->
-<section class="post-attr">
-	<span class="post-time">
+<section class="post-meta">
+	<span>
 		<time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>
 	</span>
 	{% if page.categories.size != 0 %}
-	<span class="seperator">|</span>
-	<span class="categories"> {{ site.locals.category }}
+	<span>|</span>
+	<span> {{ site.locals.category }}
 	{% for cate in page.categories %}
 		<a href="/pages/category.html#{{ cate }}" title="{{ cate }}">{{ cate }}</a>
 	{% endfor %}
 	</span>
 	{% endif %}
 	{% if page.tags.size != 0 %}
-	<span class="separator">|</span>
-	<span class="tags"> {{ site.locals.tag }}
+	<span>|</span>
+	<span> {{ site.locals.tag }}
 	{% for tag in page.tags %}
 		<a href="/pages/tag.html#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
 	{% endfor %}

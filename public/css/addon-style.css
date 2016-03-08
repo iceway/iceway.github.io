@@ -1,3 +1,62 @@
-body {
-	padding-top: 50px;
+.navbar, .navbar-fixed-left {
+	border: 0;
+	border-radius: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-fixed-left {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+	text-align: center;
+	padding: 5% 0;
+	font-size: 18px;
+}
+
+.nav-list, .nav-list>li, .nav-list>li+li, .nav-list>li>a {
+	border-radius: 0;
+	float: none;
+}
+
+.nav>li>a {
+	padding: 3px 5px;
+}
+
+.nav-list>li>a {
+	padding: 8px 10px;
+}
+
+.list-posts {
+	font-size: 16px;
+	line-height: 2;
+}
+
+.list-posts>li>time {
+	color: #888;
+	margin: 0 1em;
+}
+
+.post-meta {
+	color: #888;
+	margin: 20px 0 30px 0;
+	font-size: 90%;
+	text-align: right;
+}
+
+.post-previous-next {
+	color: #888;
+	margin: 3em 0 2em 0;
+	text-align: center;
+}
+
+#main {
+	position: absolute;
+	left: 60px;
+	top: 0;
+	right: 0;
+	max-width: 80%;
+	min-width: 50%;
 }
