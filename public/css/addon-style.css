@@ -12,8 +12,15 @@
 	bottom: 0;
 	width: 60px;
 	text-align: center;
-	padding: 5% 0;
 	font-size: 18px;
+}
+.navbar-logo {
+	margin: 60px 0 10px;
+}
+
+.navbar-logo img {
+	width: 50px;
+	height: 50px;
 }
 
 .nav-list, .nav-list>li, .nav-list>li+li, .nav-list>li>a {
