@@ -1,4 +1,14 @@
 <footer>
 	<script src="/public/js/jquery.min.js"></script>
 	<script src="/public/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		//高亮显示当前选择的导航菜单项
+		$(function(){
+			$(".navbar-container ul.nav-list li").each(function(){
+				$(this).removeClass("active");
+			})
+			var title=$("h1.page-title").text();
+			$('#'+title).addClass("active");
+		})
+	</script>
 </footer>

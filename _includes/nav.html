@@ -15,10 +15,10 @@
 		</div>
 		<ul class="nav nav-list">
 			<!-- 导航菜单: 首页、分类、标签、关于 -->
-			<li role="presentation" class="active"><a href="/">{{ site.locals.home }}</a></li>
-			<li role="presentation"><a href="/pages/category.html">{{ site.locals.category }}</a></li>
-			<li role="presentation"><a href="/pages/tag.html">{{ site.locals.tag }}</a></li>
-			<li role="presentation"><a href="/pages/about.html">{{ site.locals.about }}</a></li>
+			<li id="{{ site.locals.home }}"><a href="/">{{ site.locals.home }}</a></li>
+			<li id="{{ site.locals.category }}" ><a href="/pages/category.html">{{ site.locals.category }}</a></li>
+			<li id="{{ site.locals.tag }}"><a href="/pages/tag.html">{{ site.locals.tag }}</a></li>
+			<li id="{{ site.locals.about }}"><a href="/pages/about.html">{{ site.locals.about }}</a></li>
 		</ul>
 	</div>
 </nav>
