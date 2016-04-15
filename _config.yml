@@ -31,3 +31,7 @@ locals:
   tag: 标签
   category: 分类
   about: 关于
+
+# jekyll(>=3.0) 要求使用paginate必须在config中显式声明
+gems:
+  - jekyll-paginate
