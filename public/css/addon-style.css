@@ -72,3 +72,7 @@
 	max-width: 80%;
 	min-width: 50%;
 }
+
+img {
+	max-width: 100%;
+}
