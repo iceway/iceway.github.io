@@ -44,6 +44,32 @@ make
 make install
 ```
 
+> 上面的FDFLAGS指定的目录要根据实际环境确定，有的系统上可能是lib而不是lib64。
+
 ## 使用
 
-把编译的tmux独立文件拷贝到服务器上，运行时提示内核版本太久，这下没办法了，连安装软件的权限都没有，还能换内核吗？算了，先用tmux 1.3，等哪天服务器升级了可能会好点。这篇文章就算是练习静态编译了。
+把编译的tmux独立文件拷贝到服务器上，~~运行时提示内核版本太旧~~（问题已解决，请参见下面的更新）。
+
+-----
+
+## 更新（2016-4-20）
+
+今天看到一片文章[编译器的工作过程](https://github.com/100steps/Blogs/issues/2)，才知道原来静态编译会依赖内核版本，一下子想到这个问题。以前对编译过程没怎么了解，只知道动态编译的可执行文件体积小，运行时依赖动态库；静态编译的可执行文件体积大，但是运行时不依赖动态库。看到这里才想到是因为编译环境和运行环境的差异导致tmux提示内核版本太低。
+
+Linux下用file命令可以看到静态链接的可执行文件依赖的内核版本，如下：
+
+```bash
+➜  tmux-2.0 file tmux
+tmux: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), statically linked, for GNU/Linux 3.0.0, BuildID[sha1]=c33d1f0fd001385a52db0aafdf3827509a8e728f, not stripped
+```
+
+看了看工作环境的内核版本是2.6.38的，而我的笔记本上是4.1.15的，不过静态编译的tmux需要的内核是3.0.0的，看来静态编译过程中依赖的内核也不是编译环境所在的内核，应该是由编译器和基本的链接库决定的。
+
+把libevent和tmux的源代码传到工作服务器上，重新编译后再用file查看：
+
+```bash
+$ file tmux
+tmux: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), statically linked, for GNU/Linux 2.6.15, not stripped
+```
+
+现在编译的tmux独立文件可以正常使用，关键是我的配置文件不用再做任何更改了。
