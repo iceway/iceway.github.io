@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.article-container {
+	position: absolute;
+	left: 6rem;
+	top: 0;
+	right: 0;
+	max-width: 80%;
+	min-width: 50%;
+	margin: 0 5rem;
+}
+
+.navbar-container {
+	position: fixed;
+	height: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 6rem;
+	text-align: center;
+	font-size: 1.2rem;
+	background-color: #222222;
+}
+
+.navbar-logo {
+	margin: 6em 0 2em;
+	text-align: center;
+}
+
+.navbar-logo img {
+	width: 70px;
+	height: 70px;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 5px;
+}
+
+.navbar-list ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.navbar-list li {
+	position: relative;
+	display: block;
+	/*
+	margin: 0.8em 0;
+	*/
+	margin: 0;
+	padding: 0.4em 0;
+	text-align: center;
+}
+
+.navbar-list a {
+	border: 0;
+	margin: 0;
+	padding: 0.4em 1.5em;
+	color: #999999;
+}
+
+.navbar-list a:hover {
+	border-top: 1px solid #99cc66;
+	border-bottom: 1px solid #99cc66;
+	background-color: #181818;
+}
+
+.navbar-list li.active {
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #181818;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #333333;
+	border: 0;
+}
+
+header h1 {
+	/*
+	border-bottom: 1px solid #8a8a8a;
+	*/
+	font-size: 2rem;
+	margin: 2em 0 1em 0;
+}
+
+.post-list {
+	font-size: 1rem;
+	line-height: 2;
+}
+
+.post-list ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.post-list li {
+	margin: 0;
+}
+
+.post-list h2 {
+	margin: 1.5em 0 0.5em 0;
+}
+
+.post-list time {
+	color: #8a8a8a;
+	margin: 0 1em;
+}
+
+.post-list a {
+	color: #333333;
+	border: 0;
+}
+
+.post-list a:hover {
+	border-bottom: 1px solid #538521;
+}
+
+.page-nav {
+	margin: 3rem 0 2rem 0;
+	text-align: right;
+}
+
+.page-nav a {
+	border: 0;
+	margin: 0 0.2em;
+}
+
+a.current {
+	font-weight: bold;
+}
+
+a.disabled {
+	pointer-events: none;
+	cursor: not-allowed;
+}
+
+a.disabled:hover {
+	color: #8a8a8a;
+}
+
+h1.post-title {
+	margin: 2em 0 0.5em 0;
+	border-bottom: 1px solid #8a8a8a;
+}
+
+.post-meta {
+	color: #8a8a8a;
+	margin: 0.2em 0 3em 0;
+	font-size: 80%;
+	text-align: right;
+}
+
+.post-content, .page-content {
+	margin: 1em 0 3em 0;
+}
