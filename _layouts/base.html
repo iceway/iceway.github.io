@@ -4,14 +4,16 @@
 {% include header.html %}
 </head>
 <body>
+<nav class="navbar-container">
 {% include nav.html %}
+</nav>
 
-<div id="main" class="container" role="main">
-<article class="content">
+<article class="article-container">
 {{ content }}
 </article>
-</div>
 
+<footer class="footer-container">
 {% include footer.html %}
+</footer>
 </body>
 </html>

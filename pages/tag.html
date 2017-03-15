@@ -13,16 +13,16 @@ layout: page
 </ul>
 </div>
 
-<div class="container-fluid">
-<ul class="list-unstyled list-posts">
-{% for tag in site.tags %}
-  <li><h2 id="{{ tag[0] }}">{{ tag[0] }}</h2></li>
-{% for post in tag[1] %}
-  <li>
-  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-  </li>
-{% endfor %}
-{% endfor %}
+<div class="post-list">
+<ul>
+	{% for tag in site.tags %}
+		<li><h2 id="{{ tag[0] }}">{{ tag[0] }}</h2></li>
+		{% for post in tag[1] %}
+			<li>
+				<time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+				<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+			</li>
+		{% endfor %}
+	{% endfor %}
 </ul>
 </div>

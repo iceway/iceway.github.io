@@ -1,19 +1,9 @@
-<!-- 导航最上方按钮：点击可以显示/隐藏导航菜单 -->
-<!--
-<div style="position:fixed;right:15px;top:62px;">
-	<button id="nav_btn" class="btn btn-primary">
-		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-	</button>
-</div>
--->
-
-<nav class="navbar navbar-inverse navbar-fixed-left">
-	<div class="navbar-container">
-		<!-- 导航菜单最上面显示logo -->
-		<div class="navbar-logo">
-			<img src="{{ site.site.logo }}" id="logo"></img>
-		</div>
-		<ul class="nav nav-list">
+<div class="navbar-box">
+	<div class="navbar-logo">
+		<img src="{{ site.site.logo }}" id="logo"></img>
+	</div>
+	<div class="navbar-list">
+		<ul>
 			<!-- 导航菜单: 首页、分类、标签、关于 -->
 			<li id="{{ site.locals.home }}"><a href="/">{{ site.locals.home }}</a></li>
 			<li id="{{ site.locals.category }}" ><a href="/pages/category.html">{{ site.locals.category }}</a></li>
@@ -21,4 +11,4 @@
 			<li id="{{ site.locals.about }}"><a href="/pages/about.html">{{ site.locals.about }}</a></li>
 		</ul>
 	</div>
-</nav>
+</div>

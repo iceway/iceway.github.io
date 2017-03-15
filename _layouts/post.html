@@ -1,8 +1,8 @@
 ---
 layout: base
 ---
-<header class="page-header">
-	<h1>{{ page.title }}</h1>
+<header class="post-header">
+	<h1 class="post-title">{{ page.title }}</h1>
 </header>
 
 <!-- 文章属性：创建日期、所属分类、所属标签 -->
@@ -31,13 +31,4 @@ layout: base
 <!-- 文章内容 -->
 <section class="post-content">
 	{{ content }}
-</section>
-
-<!-- 文章下方“上一篇/下一篇”链接 -->
-<section class="post-previous-next">
-	<span>
-		<a {% if page.previous %} href="{{ page.previous.url }}" class="pageNav"{% endif %} {% unless page.previous %} class="pageNavInvalid" {% endunless %} >上一篇</a>
-		/
-		<a {% if page.next %} href="{{ page.next.url }}" class="pageNav"{% endif %} {% unless page.next %} class="pageNavInvalid" {% endunless %} >下一篇</a>
-	</span>
 </section>
