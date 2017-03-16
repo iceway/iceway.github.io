@@ -97,6 +97,7 @@ header h1 {
 .post-list {
 	font-size: 1rem;
 	line-height: 2;
+	margin: 2em 0;
 }
 
 .post-list ul {
@@ -163,4 +164,39 @@ h1.post-title {
 
 .post-content, .page-content {
 	margin: 1em 0 3em 0;
+}
+
+div.tag_cloud {
+	margin: 1em 0;
+	overflow: auto;
+}
+
+div.tag_cloud ul {
+	list-style: none;
+	font-size: 80%;
+	margin: 0;
+	padding: 0;
+}
+
+div.tag_cloud li {
+	position: relative;
+	float: left;
+	display: block;
+}
+
+div.tag_cloud a {
+	margin: 0.3em;
+	padding: 0.3em 0.5em;
+	border: 1px solid #8a8a8a;
+	border-radius: 2px;
+	background-color: #c4c4c4;
+}
+
+div.tag_cloud span.tagcloud_badge {
+	margin: 0 3px;
+	border-radius: 10px;
+	min-width: 10px;
+	padding: 3px 7px;
+	background-color: #8a8a8a;
+	color: #f8f8f8;
 }

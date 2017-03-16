@@ -3,10 +3,10 @@ title: 标签
 layout: page
 ---
 
-<div id='tag_cloud'>
-<ul class="nav nav-pills" role="tablist">
+<div class='tag_cloud'>
+<ul>
 {% for tag in site.tags %}
-	<li class="active" role="presentation">
+	<li>
 		<a href="#{{ tag[0] }}">{{ tag[0] }}</a>
 	</li>
 {% endfor %}

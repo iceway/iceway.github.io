@@ -3,11 +3,11 @@ title: 分类
 layout: page
 ---
 
-<div id='tag_cloud'>
-<ul class="nav nav-pills" role="tablist">
+<div class='tag_cloud'>
+<ul>
 {% for cat in site.categories %}
-	<li class="active" role="presentation">
-		<a href="#{{ cat[0] }}">{{ cat[0] }}<span class="badge">{{ cat[1].size }}</span></a>
+	<li>
+		<a href="#{{ cat[0] }}">{{ cat[0] }}<span class="tagcloud_badge">{{ cat[1].size }}</span></a>
 	</li>
 {% endfor %}
 </ul>
