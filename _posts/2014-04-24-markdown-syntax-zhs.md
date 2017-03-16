@@ -4,6 +4,7 @@ title:  "Markdown语法说明（详解版）"
 date:	2014-04-24 18:12:32 +0800
 category: Markdown
 tags: Markdown
+type: copied
 ---
 
 ***以下内容转载自[图灵社区·Markdown语法说明（详解版）](http://www.ituring.com.cn/article/504)***

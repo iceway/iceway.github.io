@@ -33,6 +33,15 @@ layout: base
 	{{ content }}
 </section>
 
+{% if page.type != "copied" %}
+<footer class="license">
+<div class="license">
+	本文采用<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.zh">CC BY-SA 3.0</a>许可协议
+</div>
+</footer>
+{% endif %}
+
+<footer class="comment">
 <div id="disqus_thread"></div>
 <script>
 
@@ -53,3 +62,4 @@ layout: base
 	})();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</footer>
