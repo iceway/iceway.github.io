@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OOpenWrt学习笔记（二）安装及使用
+title:  OpenWrt学习笔记（二）安装及使用
 date:	20 Mar 2017 16:38:16 +0800
 categories: Openwrt
 tags: Openwrt
