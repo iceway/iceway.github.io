@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenWrt 学习笔记 (一) 了解OpenWrt
+title:  OpenWrt学习笔记（一）了解OpenWrt
 date:	17 Mar 2017 14:57:41 +0800
 categories: Openwrt
 tags: Openwrt
