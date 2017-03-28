@@ -131,6 +131,8 @@ menuentry "openSUSE 42.1" {
 }
 ```
 
+>  我使用的完整配置文件参见：[grub.cfg](https://gist.github.com/iceway/3f8da875210219516c91b9b6be75a9ce)
+
 ## 拷贝ISO镜像
 
 将openSUSE和Puppy的ISO镜像分别拷贝到U盘的第一个和第二个分区根目录下，命名必须和上一步配置文件中的文件名相同，注意区分大小写。
