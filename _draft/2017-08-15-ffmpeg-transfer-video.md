@@ -42,6 +42,8 @@ ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
 
 码率可以分为固定码率（CBR - Constant Bit Rate）和可变码率（VBR - Variable Bit Rate）。字面意思就可以理解，固定码率每秒钟的大小是固定，所以固定码率编码时知道视频文件的时长就能确定最终文件大小，而可变码率无法预测最终文件大小。可变码率在画面高速运动且画面色彩等变化较大时使用高码率，而在更多静态内容时使用低码率，这样在保证视频画面质量的同时，能尽可能减小视频文件体积。
 
+### 恒定质量的可变码率编码
+
 先给出我常用的H.264转码的命令：
 
 ```bash
@@ -60,3 +62,48 @@ ffmpeg -i <infile> -c:v libx264 -crf 25 -preset veryslow -tune animation -c:a aa
 - `-c:a aac`：指定输出文件的音频采用aac编码。
 - `-strict -2`：因为ffmpeg使用aac编码还处于实验性阶段，该参数强制ffmpeg可以使用实验性的aac编码。
 - `-b:a 128k`：指定音频编码的平均码率为128kbps。
+
+采用crf这种编码方式，H.264会在自动计算动态码率，而且最终能在只用较小体积的情况下保证画面质量，在不需要精确控制编码参数的情况下，推荐使用。
+
+### 两遍动态码率编码
+
+H.264可以通过参数指定编码的码率，这种指定的码率其实是一个平均码率，H.264会自动计算所需动态码率并尽量保证整个视频文件的平均码率趋于所指定的码率。采用这种编码方式，可以教精确的控制最终文件，用到的命令如下：
+
+```bash
+ffmpeg -i <infile> -c:v libx264 -b:v 2500k -preset veryslow -tune film -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
+这条命令中通过`-b:v 2500k`指定视频的平均码率为2500kbps，但是由于这种平均码率的实时计算无法考虑到整个视频文件的完整画面情况，为更加优化动态码率，一般采用两遍编码的方式，命令如下：
+
+```bash
+ffmpeg -i <infile> -c:v libx264 -b:v 2500k -preset veryslow -tune film -pass 1 --slow-firstpass -an /dev/null
+ffmpeg -i <infile> -c:v libx264 -b:v 2500k -preset veryslow -tune film -pass 2 -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
+第一条命令先把整个视频文件全部扫描一遍，生成一个记录视频全局码率变化的状态文件，一般在第一遍时将输出文件设置为空设备（/dev/null）表示不生成编码后的视频文件，仅仅统计全局码率状态。到第二条命令时做第二遍编码，这次编码会读取第一次编码生成的状态统计文件，建立一个最佳化的平均码率编码。
+
+采用两遍编码（平均编码）方式，最主要的是要根据视频分辨率及期待的视频质量，指定一个比较合理的平均码率，这个需要一定的经验积累或者参考各大压片小组的作品。一般来说在保证视频源是蓝光原盘等真正高质量源的情况下，转码1080p的H.264视频平均码率分配到8000kbps以上质量会比较好，而720p的视频平均码率也应该在5000kbps以上。
+
+也可以在第一遍时使用crf编码方式，第二遍再指定具体的平均码率。需要注意的是，采用两遍编码方式，实际上做了两次H.264转码，所以花费的时间也是最慢的。
+
+### 固定码率编码
+
+H.264并未提供提供选项支持固定码率，但是可以在指定平均码率的同时，限定最大和最小码率，从而间接实现类似“固定码率”编码的效果，命令如下：
+
+```bash
+ffmpeg -i <infile> -c:v libx264 -b:v 2500k -minrate 2500k -maxrate 2500k -preset veryslow -tune film -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
+这里通过`-minrate`和`-maxrate`参数限制了H.264编码的最小和最大动态码率，且和平均码率相同，所以会以一个固定码率2500kbps来编码视频。虽然可以编码固定码率，但是最好不要这么做，这样编码的视频可能是质量最差的一种。
+
+### 无损编码
+
+开业使用`-qp 0`或者`-crf 0`的编码方式实现无损编码，但是提倡使用`-qp 0`实现无损编码，不过这样的编码方式码率可能会非常大，无损压缩的命令如下：
+
+```bash
+# 快速无损编码
+ffmpeg -i <infile> -c:v libx264 -qp 0 -preset ultrafast -c:a aac -strict -2 -b:a 128k <outfile>
+# 高压缩比无损编码
+ffmpeg -i <infile> -c:v libx264 -qp 0 -preset veryslow -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
