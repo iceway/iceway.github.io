@@ -107,3 +107,69 @@ ffmpeg -i <infile> -c:v libx264 -qp 0 -preset ultrafast -c:a aac -strict -2 -b:a
 ffmpeg -i <infile> -c:v libx264 -qp 0 -preset veryslow -c:a aac -strict -2 -b:a 128k <outfile>
 ```
 
+## 转码Xvid/mp3
+
+Xvid视频编码加上mp3音频编码可以看作是前几年DVD的编码标准，现在已是H.264的天下，这里不再做过多解释，只给出命令参考：
+
+```bash
+ffmpeg -i <infile> -c:v mpeg4 -vtag xvid -q:v 3 -c:a libmp3lame -b:a 128k <outfile>
+```
+
+## 视频分辨率缩小
+
+ffmpeg提供视频过滤器，可以实现多种过滤效果，通过scale过滤器可以缩小视频分辨率。
+
+比如，你想把一个原本是`1920x1080`分辨率的视频转码成H.264并将分辨率缩小到`1280x720`，可以通过如下命令实现：
+
+```bash
+ffmpeg -i <infile> -c:v libx264 -crf 23 --preset veryslow -tune film -vf scale=-2:720 -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
+参数`-vf scale=-2:720`的值冒号前面的值是指定输出视频的分辨率宽度，-2表示根据源视频的长宽比对照输出高度缩放宽度，而冒号后面的720指定输出视频的分辨率高度为720。也可以指定具体的宽度，而高度用-2表示等比例缩放。
+
+## 旋转/翻转视频
+
+可以通过transpose视频过滤器实现旋转视频的效果。
+
+比如，要把一个视频顺时针旋转90度：
+
+```bash
+ffmpeg -i <infile> -c:v libx264 -crf 23 --preset veryslow -tune film -vf transpose=1 -c:a aac -strict -2 -b:a 128k <outfile>
+```
+
+transpose参数的取值可以为：
+
+- 0	表示顺时针旋转90度并垂直翻转
+- 1	表示顺时针旋转90度
+- 2	表示逆时针旋转90度
+- 3	表示逆时针旋转90度并垂直翻转
+
+## 截取视频片段
+
+比如，想把一个视频文件中从2分20秒开始到5分30秒之间的片段截取出来，可以使用命令：
+
+```bash
+# 只截取视频片段，保持源视频的编码格式
+ffmpeg -i <infile> -c copy -ss 00:02:20 -to 00:05:30 <outfile>
+# 截取视频片段，并用H.264重新编码
+ffmpeg -i <infile> -c:v libx264 -crf 23 -preset veryslow -tune film -c:a aac -strict -2 -b:a 128k -ss 00:02:20 -to 00:05:30 <outfile>
+```
+
+## 合并多个视频片段为一整段
+
+过滤器concat可以合并视频片段，具体可以参考[concat](https://trac.ffmpeg.org/wiki/Concatenate)，我目前只测试过mp4文件的合并，命令如下：
+
+```bash
+echo "file '/tmp/001.mp4'" > videolist.txt
+echo "file '/tmp/002.mp4'" >> videolist.txt
+echo "file '/tmp/003.mp4'" >> videolist.txt
+ffmpeg -f concat -safe 0 -i videolist.txt -c copy out.mp4
+```
+
+该命令按照输入文件的先后顺序将001，002和003这三个视频文件合并成一个out.mp4文件，需要注意的是这里的输入文件要用绝对路径，如果文件路径是相对路径，参数`-safe 0`就不需要了。
+
+Shell中可以用一条命令完成上述4条命令的任务：
+
+```bash
+ffmpeg -f concat -i <(for f in /tmp/001.mp4 /tmp/002.mp4 /tmp/003.mp4; do echo "file '$f'"; done) -c copy out.mp4
+```
