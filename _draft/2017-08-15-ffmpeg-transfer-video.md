@@ -115,7 +115,39 @@ Xvid视频编码加上mp3音频编码可以看作是前几年DVD的编码标准�
 ffmpeg -i <infile> -c:v mpeg4 -vtag xvid -q:v 3 -c:a libmp3lame -b:a 128k <outfile>
 ```
 
-## 视频分辨率缩小
+## 封装格式
+
+前面也提到了视频的封装格式，常见主要就mp4、mkv、avi、flv、wmv、rm等，ffmpeg命令行指定输出文件时使用不同后缀，ffmpeg会自动使用该封装器封装视频、音频和字幕成为一个文件。
+
+```bash
+# 输出文件使用mp4封装
+ffmpeg -i <infile> [options] out.mp4
+# 输出文件使用mkv封装
+ffmpeg -i <infile> [options] out.mkv
+# 输出文件使用avi封装
+ffmpeg -i <infile> [options] out.avi
+# 不重编码，只转换封装格式（avi到mp4，其他类似）
+ffmpeg -i in.avi -c copy out.mp4
+```
+
+需要注意的是，有些封装器不支持封装字幕轨或者多个音频轨等，这种情况下可能会失败。
+
+另一种用法在于分离出单独的视频或者音频文件：
+
+```bash
+# 从infile中提取出视频轨，其中‘-an’表示输出文件中禁用音频轨
+ffmpeg -i in.mp4 -c:v copy -an out.mp4
+# 从infile中提取出音频轨，其中‘-vn’表示输出文件中禁用视频轨
+ffmpeg -i in.avi -c:a copy -vn out.mp3
+```
+
+当然也可以在分离视频或音频时转码到不同编码格式。
+
+
+
+## 高级用法
+
+### 视频分辨率缩小
 
 ffmpeg提供视频过滤器，可以实现多种过滤效果，通过scale过滤器可以缩小视频分辨率。
 
@@ -127,7 +159,7 @@ ffmpeg -i <infile> -c:v libx264 -crf 23 --preset veryslow -tune film -vf scale=-
 
 参数`-vf scale=-2:720`的值冒号前面的值是指定输出视频的分辨率宽度，-2表示根据源视频的长宽比对照输出高度缩放宽度，而冒号后面的720指定输出视频的分辨率高度为720。也可以指定具体的宽度，而高度用-2表示等比例缩放。
 
-## 旋转/翻转视频
+### 旋转/翻转视频
 
 可以通过transpose视频过滤器实现旋转视频的效果。
 
@@ -144,7 +176,7 @@ transpose参数的取值可以为：
 - 2	表示逆时针旋转90度
 - 3	表示逆时针旋转90度并垂直翻转
 
-## 截取视频片段
+### 截取视频片段
 
 比如，想把一个视频文件中从2分20秒开始到5分30秒之间的片段截取出来，可以使用命令：
 
@@ -155,7 +187,7 @@ ffmpeg -i <infile> -c copy -ss 00:02:20 -to 00:05:30 <outfile>
 ffmpeg -i <infile> -c:v libx264 -crf 23 -preset veryslow -tune film -c:a aac -strict -2 -b:a 128k -ss 00:02:20 -to 00:05:30 <outfile>
 ```
 
-## 合并多个视频片段为一整段
+### 合并多个视频片段为一整段
 
 过滤器concat可以合并视频片段，具体可以参考[concat](https://trac.ffmpeg.org/wiki/Concatenate)，我目前只测试过mp4文件的合并，命令如下：
 
@@ -172,4 +204,42 @@ Shell中可以用一条命令完成上述4条命令的任务：
 
 ```bash
 ffmpeg -f concat -i <(for f in /tmp/001.mp4 /tmp/002.mp4 /tmp/003.mp4; do echo "file '$f'"; done) -c copy out.mp4
+```
+
+### 调整视频长宽比
+
+有的视频长宽比不正常，看起来画片好像被强行挤窄或者拉宽，ffmpeg当然也可以调整到正常的长宽比，命令如下：
+
+```bash
+ffmpeg -i <infile> -c copy -aspect 16:9 <outfile>
+```
+
+`-c copy`表明不需要重新编码视频和音频，而`-aspect 16:9`表示仅把视频画面的长宽比改成16:9，当然可以根据具体的视频信息改成4:3或者16:10等常见的长宽比。
+
+### 裁剪视频（去黑边）
+
+有些视频画面会有额外的黑边，想去掉这些黑边就要用到ffmpeg的截取过滤器，可以参考[ffmpeg使用crop去除黑边](http://www.cnperler.com/?p=120)，这里有对于该滤镜的详细解释。
+
+```bash
+# 首先获取到我们要裁剪的画面的大小和位置
+ffmpeg -i <infile> -vf "cropdetect=24:16:0" -f null -
+# 该命令会自动检测出除黑边之外的画面在整个画面中的大小和位置信息并输出类似"crop=640:256:0:36"的信息
+# 接下来用ffmpeg的crop滤镜裁剪视频画面即可
+ffmpeg -i <infile> -vf "crop=640:256:0:36" <outfile>
+```
+
+### 添加额外信息
+
+影视文件中的视频轨或者整个的封装格式，都可以添加一些额外信息，比如创建时间，标题，字幕轨是中文还是英文等信息。
+
+常见的几个参数如下：
+
+```bash
+ffmpeg -i <infile> [options] <metadata> <outfile>
+# 添加标题信息
+-metadata title="My Title"
+# 指定字幕轨语言
+-metadata:s:a:0 language=chi
+# 视频创建时间
+-metadata creation_time="2010-12-17 06:30:00"
 ```
