@@ -162,7 +162,6 @@ h1 {
 /* 段落 */
 p {
   margin: 1em 0;
-  text-indent: 2em;
   line-height: 1.6em; }
   p.poem-like {
     text-indent: 0;
